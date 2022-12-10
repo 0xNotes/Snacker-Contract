@@ -15,7 +15,7 @@ contract Snacker {
     //     number++;
     // }
 
-    address burn = 0x000000000000000000000000000000000000dEaD;
+    address public burn = 0x000000000000000000000000000000000000dEaD;
 
 
     
@@ -30,6 +30,7 @@ contract Snacker {
     function Snack(address _contentNft, uint256 _contentId, address _styleNft, uint256 _styleId) public {
         IERC721(_contentNft).transferFrom(msg.sender, burn, _contentId);
         IERC721(_styleNft).transferFrom(msg.sender, burn, _styleId);
+        
         
     }
 }
