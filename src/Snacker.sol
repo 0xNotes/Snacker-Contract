@@ -9,6 +9,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Snacker is ERC721, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
+    string uri = "";
+    address admin = address(2);
 
     Counters.Counter private _tokenIdCounter;
 
@@ -17,7 +19,7 @@ contract Snacker is ERC721, ERC721URIStorage, Ownable {
 
 
 
-    function Snack(address _contentNft, uint256 _contentId, address _styleNft, uint256 _styleId, address to, string memory uri) public {
+    function Snack(address _contentNft, uint256 _contentId, address _styleNft, uint256 _styleId, address to) public {
         IERC721(_contentNft).transferFrom(msg.sender, burn, _contentId);
         IERC721(_styleNft).transferFrom(msg.sender, burn, _styleId);
         

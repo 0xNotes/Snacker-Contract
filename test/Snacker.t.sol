@@ -52,11 +52,12 @@ contract SnackerTest is Test {
         cheats.prank(address(1));
         testMinterB.approve(address(snacker), 1);
         cheats.prank(address(1));
-        snacker.Snack(address(testMinterA), 1, address(testMinterB), 1);
+        snacker.Snack(address(testMinterA), 1, address(testMinterB), 1, address(1));
         assertEq(testMinterA.balanceOf(address(1)), 0);
         assertEq(testMinterB.balanceOf(address(1)), 0);
         assertEq(testMinterA.balanceOf(snacker.burn()), 1);
         assertEq(testMinterB.balanceOf(snacker.burn()), 1);
+        assertEq(snacker.balanceOf(address(1)), 1);
     } 
 
     // function testSetNumber(uint256 x) public {
